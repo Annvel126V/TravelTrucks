@@ -5,7 +5,7 @@ import Navigation from "../components/section/Header/Navigation.jsx";
 const HomePage = () => {
   return (
     <>
-      <div className="">
+      <div className="relative ">
         <Navigation />
         <HomeTitle />
       </div>

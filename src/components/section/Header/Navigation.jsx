@@ -8,13 +8,23 @@ import Logo from "./Logo";
 
 const Navigation = () => {
   return (
-    <div>
+    <div className="">
       <span>
         <Logo />
       </span>
-      <nav className="text-black flex items-center hover:text-red active:text-red justify-center gap-4">
-        <Link to="/">Home</Link>
-        <Link to="/catalog">Catalog</Link>
+      <nav className=" flex items-center  justify-center gap-4">
+        <Link
+          className="text-black text-2xl hover:text-red-600 active:text-red-600"
+          to="/"
+        >
+          Home
+        </Link>
+        <Link
+          className="text-black text-2xl hover:text-red-600 active:text-red-600"
+          to="/catalog"
+        >
+          Catalog
+        </Link>
       </nav>
     </div>
   );

@@ -1,12 +1,10 @@
-import LocationSearch from "../components/section/Catalog/LocationSearch.jsx";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCampers } from "../redux/campers/operations.js";
-import CamperCard from "../components/section/Catalog/CamperCard.jsx";
-import { selectCampers, selectLoading } from "../redux/campers/selectors.js";
-import Navigation from "../components/section/Header/Navigation.jsx";
+import { fetchCampers } from "../../redux/campers/operations.js";
+import CamperCard from "../section/Catalog/CamperCard.jsx";
+import { selectCampers, selectLoading } from "../../redux/campers/selectors.js";
 
-const CatalogPage = () => {
+const FilterCamps = () => {
   const dispatch = useDispatch();
   const campers = useSelector(selectCampers);
   const loading = useSelector(selectLoading);
@@ -18,9 +16,6 @@ const CatalogPage = () => {
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Catalog</h1>
-
-      <Navigation />
-      <LocationSearch />
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -30,7 +25,7 @@ const CatalogPage = () => {
               <CamperCard key={camper.id} camper={camper} />
             ))
           ) : (
-            <p>No campers found.</p>
+            <p>No campers found.</p> // ❗ Виведе, якщо Redux повертає `[]`
           )}
         </div>
       )}
@@ -38,4 +33,4 @@ const CatalogPage = () => {
   );
 };
 
-export default CatalogPage;
+export default FilterCamps;
