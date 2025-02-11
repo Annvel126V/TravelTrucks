@@ -5,3 +5,11 @@ Web application with campers for recreation and travel. In this application, the
 Stack: React, Redux.js, TailwindCSS 
 
 # Features 
+
+# Pages
+
+# Technologies used 
+Dependencies 
+ -React 
+ -Redux.js 
+ -TailwindCSS 
