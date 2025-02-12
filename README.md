@@ -1,8 +1,15 @@
-# React + Vite
+# TravelTrucks
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Web application with campers for recreation and travel. In this application, the user can find a large selection of sampers for every taste, for relaxing with friends, family vacations, or simply scaring away from everyday life. You can view the application at the link:"https://travel-trucks-ten-gilt.vercel.app/" 
 
-Currently, two official plugins are available:
+Stack: React, Redux.js, TailwindCSS 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Features 
+
+# Pages
+
+# Technologies used 
+Dependencies 
+ -React 
+ -Redux.js 
+ -TailwindCSS 
