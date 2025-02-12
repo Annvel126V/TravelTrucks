@@ -1,14 +1,10 @@
-import HomeTitle from "../components/section/Home/HomeTitle.jsx";
-
+import Header from "../components/section/Header/Header.jsx";
 import HomePicture from "../components/section/Home/HomePicture.jsx";
-import Navigation from "../components/section/Header/Navigation.jsx";
+
 const HomePage = () => {
   return (
     <>
-      <div className="relative ">
-        <Navigation />
-        <HomeTitle />
-      </div>
+      <Header />
       <HomePicture />
     </>
   );

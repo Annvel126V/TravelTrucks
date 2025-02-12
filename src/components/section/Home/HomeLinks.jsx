@@ -4,7 +4,7 @@ const HomeLinks = () => {
     <div>
       <Link
         to="/catalog"
-        className="px-16 py-5 bg-red-600  text-white rounded-[30px]"
+        className="py-4 px-12 bg-red  text-base transition-colors cursor-pointer text-white rounded-[30px] hover:bg-darkRed active:bg-darkRed"
       >
         View Now
       </Link>

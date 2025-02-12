@@ -33,7 +33,7 @@ const BookingForm = ({ camper }) => {
         <input type="date" required className="p-2 border rounded w-full" />
         <button
           type="submit"
-          className="w-full p-2 bg-red-500 text-white rounded"
+          className="w-full p-2 bg-red-500 text-white rounded cursor-pointer"
         >
           Book Now
         </button>

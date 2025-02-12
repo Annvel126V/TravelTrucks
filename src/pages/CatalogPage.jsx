@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCampers } from "../redux/campers/operations.js";
 import CamperCard from "../components/section/Catalog/CamperCard.jsx";
 import { selectCampers, selectLoading } from "../redux/campers/selectors.js";
-import Navigation from "../components/section/Header/Navigation.jsx";
+import Header from "../components/section/Header/Header.jsx";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -17,9 +17,7 @@ const CatalogPage = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Catalog</h1>
-
-      <Navigation />
+      <Header />
       <LocationSearch />
       {loading ? (
         <p>Loading...</p>

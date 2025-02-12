@@ -25,8 +25,10 @@ const CamperCard = ({ camper }) => {
             <p className="text-lg font-semibold">{camper.price}</p>
           </div>
           <button
-            className={`p-2 rounded-full ${
-              isFavorite ? "bg-red-500 text-white" : "bg-gray-100 text-gray-500"
+            className={`  cursor-pointer ${
+              isFavorite
+                ? "bg-red-500 text-white"
+                : "bg-gray-100 text-gray-500 "
             }`}
             onClick={() => dispatch(toggleFavorite(camper.id))}
           >
