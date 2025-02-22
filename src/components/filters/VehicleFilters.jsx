@@ -28,7 +28,7 @@ const VehicleFilters = ({
         Vehicle Equipment
       </h3>
       <hr className="my-6 h-px w-[360px] border-lightGray" />
-      <div className="mb-8 flex flex-wrap gap-3">
+      <div className="mb-8 flex flex-wrap w-[360px] gap-3">
         <button
           type="button"
           onClick={onToggleTransmission}
