@@ -21,7 +21,7 @@ const CatalogPage = () => {
   return (
     <div>
       <Header />
-      <div className=" flex w-full p-16 gap-16 justify-center">
+      <div className=" flex  p-16 gap-16 justify-center">
         <Filters />
         <main className="">
           {loading && campers.length === 0 && <LoadingSpinner />}

@@ -42,7 +42,7 @@ const CamperCard = ({ camper }) => {
   };
 
   return (
-    <li className="flex flex-wrap gap-6 rounded-[20px] border border-lightGray p-6 md:w-[900px] md:flex-nowrap shadow-sm">
+    <li className="flex flex-wrap w-[1200px] gap-6 rounded-[20px] border border-lightGray p-6 md:w-[888px] md:flex-nowrap shadow-sm">
       <div className="w-[290px] rounded-[10px] overflow-hidden">
         <img
           src={gallery?.[0]?.thumb || "/images/default-camper.jpg"}
