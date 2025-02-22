@@ -18,8 +18,8 @@ const Filters = () => {
   );
 
   useEffect(() => {
-    dispatch(resetCampers()); // Скинути старі результати
-    dispatch(fetchCampers()); // Завантажити нові з урахуванням фільтрів
+    dispatch(resetCampers());
+    dispatch(fetchCampers());
   }, [transmission, equipment, location, form, dispatch]);
 
   return (
