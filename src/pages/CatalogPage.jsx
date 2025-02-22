@@ -1,37 +1,49 @@
-import LocationSearch from "../components/section/Catalog/LocationSearch.jsx";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCampers } from "../redux/campers/operations.js";
 import CamperCard from "../components/section/Catalog/CamperCard.jsx";
-import { selectCampers, selectLoading } from "../redux/campers/selectors.js";
 import Header from "../components/section/Header/Header.jsx";
+import Filters from "../components/Filters/Filters.jsx";
+import LoadingSpinner from "../components/LoadingSpinner.jsx";
+import ErrorMessage from "../components/ErrorMessage.jsx";
+import Pagination from "../components/section/Catalog/Pagination.jsx";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
-  const campers = useSelector(selectCampers);
-  const loading = useSelector(selectLoading);
+  const campers = useSelector((state) => state.campers.items);
+  const loading = useSelector((state) => state.campers.loading);
+  const error = useSelector((state) => state.campers.error);
 
   useEffect(() => {
     dispatch(fetchCampers({}));
   }, [dispatch]);
 
   return (
-    <div className="p-4">
+    <div>
       <Header />
-      <LocationSearch />
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {campers.length > 0 ? (
-            campers.map((camper) => (
-              <CamperCard key={camper.id} camper={camper} />
-            ))
-          ) : (
-            <p>No campers found.</p>
+      <div className=" flex p-16  justify-center">
+        <Filters />
+        <main className="">
+          {loading && campers.length === 0 && <LoadingSpinner />}
+          {error && <ErrorMessage message={error} />}
+          {!loading && !error && (
+            <>
+              <ul className="flex flex-col gap-8">
+                {campers.length > 0 ? (
+                  campers.map((camper) => (
+                    <CamperCard key={camper.id} camper={camper} />
+                  ))
+                ) : (
+                  <p className="text-center text-gray-500">No campers found.</p>
+                )}
+              </ul>
+              <div className="flex mt-10 justify-center">
+                <Pagination />
+              </div>
+            </>
           )}
-        </div>
-      )}
+        </main>
+      </div>
     </div>
   );
 };

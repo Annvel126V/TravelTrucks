@@ -25,7 +25,7 @@ const FilterCamps = () => {
               <CamperCard key={camper.id} camper={camper} />
             ))
           ) : (
-            <p>No campers found.</p> // ❗ Виведе, якщо Redux повертає `[]`
+            <p>No campers found.</p>
           )}
         </div>
       )}

@@ -17,14 +17,26 @@ const filtersSlice = createSlice({
       state.form = action.payload;
     },
     toggleEquipment(state, action) {
-      if (state.equipment.includes(action.payload)) {
-        state.equipment = state.equipment.filter((eq) => eq !== action.payload);
+      const item = action.payload;
+      if (state.equipment.includes(item)) {
+        state.equipment = state.equipment.filter((eq) => eq !== item);
       } else {
-        state.equipment.push(action.payload);
+        state.equipment.push(item);
       }
     },
+    toggleTransmission(state) {
+      state.transmission =
+        state.transmission === "automatic" ? "" : "automatic";
+    },
+    resetFilters: () => initialState,
   },
 });
 
-export const { setLocation, setForm, toggleEquipment } = filtersSlice.actions;
+export const {
+  setLocation,
+  setForm,
+  toggleEquipment,
+  toggleTransmission,
+  resetFilters,
+} = filtersSlice.actions;
 export default filtersSlice.reducer;

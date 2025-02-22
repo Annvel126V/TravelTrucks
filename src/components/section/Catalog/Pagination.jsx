@@ -4,14 +4,16 @@ import { loadMoreCampers } from "../../../redux/campers/operations";
 const Pagination = () => {
   const dispatch = useDispatch();
   const hasMore = useSelector((state) => state.campers.hasMore);
+  const isLoading = useSelector((state) => state.campers.isLoading);
 
   return (
     hasMore && (
       <button
         onClick={() => dispatch(loadMoreCampers())}
-        className="mt-6 px-4 py-2 bg-red-500 text-white rounded"
+        disabled={isLoading}
+        className=" w-[145px] h-[56px] bg-white border border-lightGray text-black rounded-[200px] hover:border-darkRed disabled:opacity-50"
       >
-        Load More
+        {isLoading ? "Loading..." : "Load More"}
       </button>
     )
   );

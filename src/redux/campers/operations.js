@@ -6,36 +6,61 @@ const BASE_URL = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers";
 
 export const fetchCampers = createAsyncThunk(
   "campers/fetchCampers",
-  async (filters, { rejectWithValue }) => {
+  async (_, { getState, rejectWithValue }) => {
     try {
-      const response = await axios.get(BASE_URL, { params: filters });
-
-      console.log("🚀 API Full Response:", response.data);
+      const { filters, campers } = getState();
+      const response = await axios.get(BASE_URL, {
+        params: {
+          page: campers.page,
+          limit: 4,
+          location: filters.location,
+          form: filters.form,
+          transmission: filters.transmission,
+          equipment: filters.equipment.join(",") || undefined,
+        },
+      });
 
       if (!response.data || !Array.isArray(response.data.items)) {
-        console.error("❌ API response is not an array:", response.data);
+        console.error("API response is not an array:", response.data);
         return rejectWithValue("Invalid API response");
       }
 
       return response.data.items.map((camper) => ({
         ...camper,
-        image: camper.gallery?.[0]?.thumb || "/images/default-camper.jpg", // ✅ Бере `gallery[0].thumb`, якщо є
-        price: camper.price ? `€${Number(camper.price).toFixed(2)}` : "N/A", // ✅ Формат ціни
+        image: camper.gallery?.[0]?.thumb || "/images/default-camper.jpg",
+        price: camper.price ? `€${Number(camper.price).toFixed(2)}` : "N/A",
       }));
     } catch (error) {
-      console.error("❌ Error fetching campers:", error);
+      console.error("Error fetching campers:", error);
       return rejectWithValue(error.message);
     }
   }
 );
 export const loadMoreCampers = createAsyncThunk(
   "campers/loadMoreCampers",
-  async (_, { getState }) => {
-    const state = getState();
-    const response = await axios.get(BASE_URL, {
-      params: { page: state.campers.page + 1 },
-    });
-    return response.data.items;
+  async (_, { getState, rejectWithValue }) => {
+    try {
+      const { campers, filters } = getState();
+      const nextPage = campers.page + 1;
+
+      const response = await axios.get(BASE_URL, {
+        params: {
+          page: nextPage,
+          limit: 4,
+          location: filters.location,
+          form: filters.form,
+          transmission: filters.transmission,
+          equipment: filters.equipment.join(",") || undefined,
+        },
+      });
+
+      return {
+        items: response.data.items,
+        totalPages: response.data.totalPages,
+      };
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
   }
 );
 
