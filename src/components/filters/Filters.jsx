@@ -1,5 +1,5 @@
-import VehicleFilters from "./VehicleFilters";
-import TypeFilter from "./TypeFilter";
+import VehicleFilters from "./VehicleFilters.jsx";
+import TypeFilter from "./TypeFilter.jsx";
 import SearchButton from "../section/Catalog/SearchButton.jsx";
 import LocationSearch from "../section/Catalog/LocationSearch.jsx";
 import { useSelector, useDispatch } from "react-redux";
