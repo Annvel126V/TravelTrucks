@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCampers } from "../redux/campers/operations.js";
 import CamperCard from "../components/section/Catalog/CamperCard.jsx";
 import Header from "../components/section/Header/Header.jsx";
-import Filters from "../components/Filters/Filters.jsx";
+import Filters from "../components/Filters/Filters";
 import LoadingSpinner from "../components/LoadingSpinner.jsx";
 import ErrorMessage from "../components/ErrorMessage.jsx";
 import Pagination from "../components/section/Catalog/Pagination.jsx";
