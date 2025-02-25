@@ -10,6 +10,7 @@ import {
 import { resetCampers } from "../../redux/campers/slice.js";
 import { fetchCampers } from "../../redux/campers/operations.js";
 import { useEffect } from "react";
+import VehicleTitle from "../section/Catalog/VehicleTitle.jsx";
 
 const Filters = () => {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ const Filters = () => {
     <aside className="">
       <LocationSearch />
       <label className="text-darkGray mb-8">Filters</label>
+      <VehicleTitle />
       <VehicleFilters
         transmission={transmission}
         equipment={equipment}

@@ -23,6 +23,7 @@ const CatalogPage = () => {
       <Header />
       <div className=" flex  p-16 gap-16 justify-center">
         <Filters />
+
         <main className="">
           {loading && campers.length === 0 && <LoadingSpinner />}
           {error && <ErrorMessage message={error} />}

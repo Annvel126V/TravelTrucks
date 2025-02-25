@@ -15,7 +15,6 @@ const CamperCard = ({ camper }) => {
     id,
     name,
     gallery,
-    price,
     rating,
     reviews,
     location,
@@ -55,9 +54,7 @@ const CamperCard = ({ camper }) => {
         <div className="flex justify-between items-start">
           <h3 className="text-xl font-bold text-black">{name}</h3>
           <div className="flex items-center gap-4">
-            <p className="text-lg font-semibold text-black">
-              &euro;{Number(price) ? Number(price).toFixed(2) : "80000"}
-            </p>
+            <p className="text-lg font-semibold text-black">{camper.price}</p>
             <button type="button" onClick={handleFavoriteToggle}>
               <Icon
                 id="heart"

@@ -57,10 +57,10 @@ const campersSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchCampers.fulfilled, (state, { payload }) => {
-        state.items = payload.items;
-        state.totalPages = payload.totalPages;
+      .addCase(fetchCampers.fulfilled, (state, action) => {
+        console.log("Redux updated with campers:", action.payload);
         state.loading = false;
+        state.items = action.payload || [];
       })
       .addCase(fetchCampers.rejected, (state, action) => {
         state.loading = false;

@@ -7,7 +7,7 @@ const Tabs = ({ camper }) => {
 
   return (
     <div>
-      <div className="flex gap-6 border-b ml-16 border-lightGray mb-6">
+      <div className="flex gap-6 border-b ml-16 border-lightGray ">
         <button
           onClick={() => setActiveTab("features")}
           className={`pb-2 font-bold text-black ${
