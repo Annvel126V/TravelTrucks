@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCampers, loadMoreCampers } from "./operations.js";
+import {
+  fetchCampers,
+  loadMoreCampers,
+  fetchCamperById,
+  bookCamper,
+} from "./operations.js";
 
 const initialState = {
   items: [],
@@ -40,6 +45,7 @@ const campersSlice = createSlice({
       state.hasMore = true;
       state.loading = false;
       state.error = null;
+      Object.assign(state, initialState);
     },
     clearSelectedCamper: (state) => {
       state.selectedCamper = null;
@@ -51,10 +57,10 @@ const campersSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchCampers.fulfilled, (state, action) => {
-        console.log("Redux updated with campers:", action.payload);
+      .addCase(fetchCampers.fulfilled, (state, { payload }) => {
+        state.items = payload.items;
+        state.totalPages = payload.totalPages;
         state.loading = false;
-        state.items = action.payload || [];
       })
       .addCase(fetchCampers.rejected, (state, action) => {
         state.loading = false;
@@ -64,6 +70,32 @@ const campersSlice = createSlice({
         state.items = [...state.items, ...action.payload.items];
         state.page += 1;
         state.hasMore = state.page < action.payload.totalPages;
+      })
+      .addCase(fetchCamperById.pending, (state) => {
+        state.loading = true;
+        state.currentCamper = null;
+      })
+      .addCase(fetchCamperById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.currentCamper = action.payload;
+      })
+      .addCase(fetchCamperById.rejected, (state) => {
+        state.loading = false;
+        state.currentCamper = null;
+      })
+      .addCase(bookCamper.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(bookCamper.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.items = state.items.map((camper) =>
+          camper.id === payload.camperId ? { ...camper, booked: true } : camper
+        );
+      })
+      .addCase(bookCamper.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });

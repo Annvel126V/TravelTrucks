@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-axios;
 
 const BASE_URL = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers";
 
@@ -69,11 +68,41 @@ export const fetchCamperById = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${BASE_URL}/${id}`);
-      return response.data;
+      return {
+        ...response.data,
+        price: response.data.price
+          ? Number(response.data.price).toFixed(2)
+          : "N/A",
+        reviews: (response.data.reviews || []).map((review) => ({
+          ...review,
+          reviewer: {
+            name:
+              typeof review.reviewer === "string"
+                ? review.reviewer.trim()
+                : review.reviewer?.name?.trim() || "Anonymous",
+          },
+          rating: Number(review.rating) || 0,
+        })),
+      };
     } catch (error) {
       return rejectWithValue(
         error.response?.data || "Error fetching camper details"
       );
+    }
+  }
+);
+
+export const bookCamper = createAsyncThunk(
+  "campers/bookCamper",
+  async ({ camperId, bookingData }, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post(
+        `${BASE_URL}/${camperId}/bookings`,
+        bookingData
+      );
+      return { ...data, camperId };
+    } catch (error) {
+      return rejectWithValue(error.response?.data || "Booking failed");
     }
   }
 );

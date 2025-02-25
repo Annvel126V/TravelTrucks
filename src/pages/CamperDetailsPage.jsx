@@ -2,35 +2,31 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchCamperById } from "../redux/campers/operations.js";
+import CamperInfo from "../components/section/CamperDetails/CamperInfo.jsx";
+import Header from "../components/section/Header/Header.jsx";
+import Tabs from "../components/section/CamperDetails/Tabs.jsx";
 
 const CamperDetailsPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const camper = useSelector((state) => state.campers.selectedCamper);
+  const camper = useSelector((state) => state.campers.currentCamper);
   const loading = useSelector((state) => state.campers.loading);
 
   useEffect(() => {
     dispatch(fetchCamperById(id));
   }, [dispatch, id]);
 
-  if (loading || !camper) return <p>Loading...</p>;
+  if (loading) return <p>Loading...</p>;
+  if (!camper) return <p>Camper not found</p>;
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      <img src={camper.image} alt={camper.name} className="w-full rounded-lg" />
-      <h1 className="text-3xl font-bold mt-4">{camper.name}</h1>
-      <p className="text-gray-500">{camper.description}</p>
-      <h2 className="text-2xl font-bold mt-4">Specifications</h2>
-      <ul>
-        {Object.entries(camper).map(([key, value]) =>
-          typeof value === "boolean" ? (
-            <li key={key}>
-              {key}: {value ? "✔️ Yes" : "❌ No"}
-            </li>
-          ) : null
-        )}
-      </ul>
-    </div>
+    <>
+      <Header />
+      <div className="">
+        <CamperInfo camper={camper} />
+      </div>
+      <Tabs camper={camper} />
+    </>
   );
 };
 
