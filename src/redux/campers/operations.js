@@ -15,7 +15,10 @@ export const fetchCampers = createAsyncThunk(
           location: filters.location,
           form: filters.form,
           transmission: filters.transmission,
-          equipment: filters.equipment.join(",") || undefined,
+          equipment:
+            filters.equipment.length > 0
+              ? filters.equipment.join(",")
+              : undefined, // Декілька критеріїв
         },
       });
 

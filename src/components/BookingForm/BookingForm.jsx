@@ -1,5 +1,5 @@
 import { Formik } from "formik";
-import * as Yup from "yup";
+import validationSchema from "../Schemas/validationSchema";
 import BookingFormHeader from "./BookingFormHeader";
 import BookingFormFields from "./BookingFormFields";
 import { useDispatch } from "react-redux";
@@ -15,19 +15,6 @@ const BookingForm = ({ camper }) => {
     bookingDate: null,
     comment: "",
   };
-
-  const validationSchema = Yup.object({
-    name: Yup.string().required("Name is required"),
-    email: Yup.string().email("Invalid email").required("Email is required"),
-    bookingDate: Yup.date()
-      .nullable()
-      .transform((value, originalValue) =>
-        originalValue === "" ? null : value
-      )
-      .typeError("Booking date is required")
-      .required("Booking date is required"),
-    comment: Yup.string(),
-  });
 
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
     try {

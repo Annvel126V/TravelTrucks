@@ -1,4 +1,3 @@
-import VehicleFilters from "./VehicleFilters.jsx";
 import TypeFilter from "./TypeFilter.jsx";
 import SearchButton from "../section/Catalog/SearchButton.jsx";
 import LocationSearch from "../section/Catalog/LocationSearch.jsx";
