@@ -12,9 +12,9 @@ export const fetchCampers = createAsyncThunk(
         params: {
           page: campers.page,
           limit: 4,
-          location: filters.location,
-          form: filters.form,
-          transmission: filters.transmission,
+          location: filters.location || undefined,
+          form: filters.form || undefined,
+          transmission: filters.transmission || undefined,
           equipment:
             filters.equipment.length > 0
               ? filters.equipment.join(",")
