@@ -8,19 +8,37 @@ export const fetchCampers = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     try {
       const { filters, campers } = getState();
-      const response = await axios.get(BASE_URL, {
-        params: {
-          page: campers.page,
-          limit: 4,
-          location: filters.location || undefined,
-          form: filters.form || undefined,
-          transmission: filters.transmission || undefined,
-          equipment:
-            filters.equipment.length > 0
-              ? filters.equipment.join(",")
-              : undefined, // Декілька критеріїв
-        },
+
+      // 1. Початковий об’єкт з базовими параметрами
+      const queryParams = {
+        page: campers.page,
+        limit: 4,
+      };
+
+      // 2. Якщо користувач ввів локацію — додаємо
+      if (filters.location) {
+        queryParams.location = filters.location;
+      }
+
+      // 3. Якщо обрано тип кузова (form)
+      if (filters.form) {
+        queryParams.form = filters.form;
+      }
+
+      // 4. Якщо користувач обрав transmission
+      if (filters.transmission) {
+        queryParams.transmission = filters.transmission;
+      }
+
+      // 5. Додаємо поля з equipment як окремі ключі
+      // Якщо filters.equipment = ["AC", "kitchen"], то
+      // queryParams буде { AC: true, kitchen: true }.
+      filters.equipment.forEach((eq) => {
+        queryParams[eq] = true;
       });
+
+      // 6. Запит до бекенду
+      const response = await axios.get(BASE_URL, { params: queryParams });
 
       if (!response.data || !Array.isArray(response.data.items)) {
         console.error("API response is not an array:", response.data);

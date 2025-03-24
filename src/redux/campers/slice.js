@@ -8,12 +8,12 @@ import {
 
 const initialState = {
   items: [],
-  favorites: JSON.parse(localStorage.getItem("favorites")) || [],
+  camperDetails: null,
+  currentPage: 1,
+  params: "",
+  totalItems: 0,
   loading: false,
   error: null,
-  page: 1,
-  totalPages: 1,
-  hasMore: true,
 };
 
 const campersSlice = createSlice({
@@ -41,7 +41,7 @@ const campersSlice = createSlice({
     resetCampers: (state) => {
       state.items = [];
       state.page = 1;
-      state.totalPages = 1;
+      state.currentPage = 1;
       state.hasMore = true;
       state.loading = false;
       state.error = null;
