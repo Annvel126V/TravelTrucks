@@ -1,35 +1,25 @@
-import { useSelector } from "react-redux";
-import { selectCamperById } from "../redux/campers/selectors";
-const FeaturesDetalis = () => {
-  const camper = useSelector(selectCamperById);
+const FeaturesDetalis = ({ camper }) => {
+  if (!camper) return null;
+  const specs = [
+    { label: "Form", value: camper.form },
+    { label: "Length", value: camper.length },
+    { label: "Width", value: camper.width },
+    { label: "Height", value: camper.height },
+    { label: "Tank", value: camper.tank },
+    { label: "Consumption", value: camper.consumption },
+  ];
+
   return (
-    <section>
-      <h2>Vehicle details</h2>
-      <ul>
-        <li>
-          <span>Form</span>
-          <span>{camper.form}</span>
-        </li>
-        <li>
-          <span>Length</span>
-          <span>{camper.length}</span>
-        </li>
-        <li>
-          <span>Width</span>
-          <span>{camper.width}</span>
-        </li>
-        <li>
-          <span>Height</span>
-          <span>{camper.height}</span>
-        </li>
-        <li>
-          <span>Tank</span>
-          <span>{camper.tank}</span>
-        </li>
-        <li>
-          <span>Consumption</span>
-          <span>{camper.consumption}</span>
-        </li>
+    <section className="p-6   ">
+      <h3 className="text-lg font-semibold text-black mb-4">Vehicle details</h3>
+      <hr className="border border-lightGray mb-4" />
+      <ul className="space-y-3 text-sm text-black">
+        {specs.map(({ label, value }) => (
+          <li key={label} className="flex justify-between">
+            <span className="text-darkGray">{label}</span>
+            <span className="font-medium capitalize">{value}</span>
+          </li>
+        ))}
       </ul>
     </section>
   );

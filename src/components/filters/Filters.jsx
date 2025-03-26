@@ -33,6 +33,7 @@ const Filters = () => {
         equipment={equipment}
         onToggleTransmission={() => dispatch(toggleTransmission())}
         onToggleEquipment={(item) => dispatch(toggleEquipment(item))}
+        variant="square"
       />
       <TypeFilter />
       <SearchButton />

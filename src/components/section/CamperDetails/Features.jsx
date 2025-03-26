@@ -1,26 +1,17 @@
-import VehicleFilters from "../../filters/VehicleFilters";
+import CamperFeatures from "../Catalog/CamperFeatures";
 import BookingForm from "../../BookingForm/BookingForm";
-import { useState } from "react";
 import FeaturesDetalis from "../../FeaturesDetalis";
 
 const Features = ({ camper }) => {
-  const [transmission, setTransmission] = useState(null);
-  const [setEquipment] = useState([]);
-
-  const onToggleTransmission = () => {
-    setTransmission(transmission === "automatic" ? null : "automatic");
-  };
-
-  const onToggleEquipment = (key) => {
-    setEquipment((prev) =>
-      prev.includes(key) ? prev.filter((item) => item !== key) : [...prev, key]
-    );
-  };
   return (
-    <div className="grid grid-cols-1 md:grid-cols- p-16 gap-10 ">
-      <VehicleFilters />
-      <FeaturesDetalis />
-      <div className="">
+    <div className="flex  bg-white flex-col lg:flex-row justify-around gap-20 p-6 lg:p-12  rounded-2xl">
+      <div className="flex bg-darkWhite rounded-xl p-6 flex-col gap-10  lg:w-[631px]">
+        <CamperFeatures features={camper} />
+
+        <FeaturesDetalis camper={camper} />
+      </div>
+
+      <div className="w-full lg:w-[40%]">
         <BookingForm camper={camper} />
       </div>
     </div>
