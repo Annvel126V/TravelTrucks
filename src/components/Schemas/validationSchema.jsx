@@ -10,6 +10,7 @@ const validationSchema = Yup.object({
     .required("Email is required"),
   bookingDate: Yup.date()
     .nullable()
+    .typeError("Booking date is required")
     .required("Booking date is required")
     .min(new Date(), "The date cannot be in the past"),
   comment: Yup.string().max(200, "The comment must not exceed 200 characters"),

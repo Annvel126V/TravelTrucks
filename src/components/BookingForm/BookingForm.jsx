@@ -18,13 +18,17 @@ const BookingForm = ({ camper }) => {
 
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
     try {
-      const bookingData = {
-        ...values,
-        bookingDate: values.bookingDate?.toISOString() ?? null,
+      const payload = {
+        name: values.name,
+        email: values.email,
+        bookingDate: values.bookingDate.toISOString(), // тут safe
+        comment: values.comment,
       };
-      await dispatch(bookCamper({ camperId: camper.id, bookingData })).unwrap();
 
-      toast.success(`Camper "${camper.name}, " booked successfully!`);
+      await dispatch(
+        bookCamper({ camperId: camper.id, bookingData: payload })
+      ).unwrap();
+      toast.success(`Camper "${camper.name}" booked successfully!`);
       resetForm();
     } catch (error) {
       toast.error(`Booking failed: ${error}`);
@@ -32,9 +36,8 @@ const BookingForm = ({ camper }) => {
       setSubmitting(false);
     }
   };
-
   return (
-    <div className="p-6 w-[641px] rounded-lg shadow border border-lightGray">
+    <div className="p-6 w-[641px] h-[588px] rounded-lg shadow border border-lightGray">
       <BookingFormHeader />
       <Formik
         initialValues={initialValues}

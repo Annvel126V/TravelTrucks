@@ -9,35 +9,27 @@ export const fetchCampers = createAsyncThunk(
     try {
       const { filters, campers } = getState();
 
-      // 1. Початковий об’єкт з базовими параметрами
       const queryParams = {
         page: campers.page,
         limit: 4,
       };
 
-      // 2. Якщо користувач ввів локацію — додаємо
       if (filters.location) {
         queryParams.location = filters.location;
       }
 
-      // 3. Якщо обрано тип кузова (form)
       if (filters.form) {
         queryParams.form = filters.form;
       }
 
-      // 4. Якщо користувач обрав transmission
       if (filters.transmission) {
         queryParams.transmission = filters.transmission;
       }
 
-      // 5. Додаємо поля з equipment як окремі ключі
-      // Якщо filters.equipment = ["AC", "kitchen"], то
-      // queryParams буде { AC: true, kitchen: true }.
       filters.equipment.forEach((eq) => {
         queryParams[eq] = true;
       });
 
-      // 6. Запит до бекенду
       const response = await axios.get(BASE_URL, { params: queryParams });
 
       if (!response.data || !Array.isArray(response.data.items)) {
@@ -89,21 +81,32 @@ export const fetchCamperById = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${BASE_URL}/${id}`);
+
+      const camper = response.data;
+
       return {
-        ...response.data,
-        price: response.data.price
-          ? Number(response.data.price).toFixed(2)
-          : "N/A",
-        reviews: (response.data.reviews || []).map((review) => ({
-          ...review,
-          reviewer: {
-            name:
-              typeof review.reviewer === "string"
-                ? review.reviewer.trim()
-                : review.reviewer?.name?.trim() || "Anonymous",
-          },
-          rating: Number(review.rating) || 0,
-        })),
+        ...camper,
+        price: camper.price ? Number(camper.price).toFixed(2) : "N/A",
+        reviews: (camper.reviews || []).map((review) => {
+          let name = "Anonymous";
+
+          if (review.reviewer) {
+            if (typeof review.reviewer === "string") {
+              name = review.reviewer.trim();
+            } else if (
+              typeof review.reviewer === "object" &&
+              typeof review.reviewer.name === "string"
+            ) {
+              name = review.reviewer.name.trim();
+            }
+          }
+
+          return {
+            ...review,
+            reviewer: { name },
+            rating: Number(review.rating) || 0,
+          };
+        }),
       };
     } catch (error) {
       return rejectWithValue(

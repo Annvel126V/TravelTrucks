@@ -6,8 +6,8 @@ const Tabs = ({ camper }) => {
   const [activeTab, setActiveTab] = useState("features");
 
   return (
-    <div>
-      <div className="flex gap-6 border-b ml-16 border-lightGray ">
+    <div className="">
+      <div className="flex gap-6 border-b ml-16  border-lightGray ">
         <button
           onClick={() => setActiveTab("features")}
           className={`pb-2 font-bold text-black ${
