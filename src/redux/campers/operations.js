@@ -90,20 +90,20 @@ export const fetchCamperById = createAsyncThunk(
         reviews: (camper.reviews || []).map((review) => {
           let name = "Anonymous";
 
-          if (review.reviewer) {
-            if (typeof review.reviewer === "string") {
-              name = review.reviewer.trim();
-            } else if (
-              typeof review.reviewer === "object" &&
-              typeof review.reviewer.name === "string"
-            ) {
-              name = review.reviewer.name.trim();
-            }
+          if (typeof review.reviewer === "string") {
+            name = review.reviewer.trim();
+          } else if (
+            typeof review.reviewer === "object" &&
+            typeof review.reviewer.name === "string"
+          ) {
+            name = review.reviewer.name.trim();
+          } else if (typeof review.reviewer_name === "string") {
+            name = review.reviewer_name.trim();
           }
 
           return {
             ...review,
-            reviewer: { name },
+            reviewerName: name,
             rating: Number(review.rating) || 0,
           };
         }),

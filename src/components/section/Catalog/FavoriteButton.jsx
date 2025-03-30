@@ -14,7 +14,7 @@ const FavoriteButton = ({ camperId }) => {
     <button
       onClick={handleToggle}
       className={`px-3 py-1 rounded-lg border ${
-        isFavorite ? "bg-red-500 text-white" : "bg-gray text-gray-700"
+        isFavorite ? "bg-red-500 text-white" : "bg-gray text-gray"
       }`}
       title={isFavorite ? "Remove from favorites" : "Add to favorites"}
     >

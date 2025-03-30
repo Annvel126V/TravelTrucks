@@ -2,7 +2,7 @@ import Icon from "../Icon/Icon";
 
 const Logo = () => {
   return (
-    <div className="absolute left-12 flex h-4 items-baseline">
+    <div className="absolute left-12 flex h-3  items-baseline">
       <span>
         <Icon id="icon-T" w={13} h={15} className="fill-black" />
       </span>
@@ -19,7 +19,7 @@ const Logo = () => {
         <Icon id="icon-E" w={12} h={12} className="fill-black" />
       </span>
       <span>
-        <Icon id="icon-L" w={5} h={15} className="fill-black" />
+        <Icon id="icon-L" w={7} h={15} className="fill-black" />
       </span>
       <span>
         <Icon id="icon-T" w={14} h={15} className="fill-darkGray" />
@@ -34,10 +34,10 @@ const Logo = () => {
         <Icon id="icon-C" w={12} h={12} className="fill-darkGray" />
       </span>
       <span>
-        <Icon id="icon-K" w={13} h={15} className="fill-darkGray" />
+        <Icon id="icon-K" w={14} h={15} className="fill-darkGray" />
       </span>
       <span>
-        <Icon id="icon-S" w={12} h={13} className="fill-darkGray" />
+        <Icon id="icon-S" w={13} h={13} className="fill-darkGray" />
       </span>
     </div>
   );

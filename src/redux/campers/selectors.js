@@ -8,6 +8,7 @@ export const selectPage = (state) => state.campers.page;
 export const selectHasMore = (state) => state.campers.hasMore;
 export const selectItemsPerPage = (state) => state.campers.itemsPerPage;
 export const selectFilters = (state) => state.filters;
+export const selectCamperDetails = (state) => state.campers.currentCamper;
 
 export const selectCamperFilter = createSelector(
   [selectCampers, selectNameFilter],
@@ -46,4 +47,6 @@ export const selectFilteredCampers = createSelector(
 );
 
 export const selectCamperById = (state, id) =>
-  state.campers.items.find((camper) => camper.id === id) || null;
+  state.campers.items.find(
+    (camper) => camper.id === id || camper.id === Number(id)
+  ) || null;
