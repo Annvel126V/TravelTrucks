@@ -1,6 +1,6 @@
 import CamperFeatures from "../Catalog/CamperFeatures";
 import BookingForm from "../../BookingForm/BookingForm";
-import FeaturesDetalis from "../../FeaturesDetalis";
+import FeaturesDetalis from "./FeaturesDetalis";
 
 const Features = ({ camper }) => {
   return (
