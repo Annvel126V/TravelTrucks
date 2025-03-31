@@ -6,29 +6,13 @@ import {
 } from "../../../redux/campers/slice.js";
 import Icon from "../../Icon/Icon";
 import { Link } from "react-router-dom";
+import CamperFeatures from "./CamperFeatures.jsx";
 
 const CamperCard = ({ camper }) => {
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites) || [];
 
-  const {
-    id,
-    name,
-    gallery,
-    rating,
-    reviews,
-    location,
-    description,
-    AC,
-    gas,
-    kitchen,
-    TV,
-    bathroom,
-    water,
-    radio,
-    refrigerator,
-    microwave,
-  } = camper;
+  const { id, name, gallery, rating, reviews, location, description } = camper;
 
   const isFavorited = favorites.includes(id);
 
@@ -85,30 +69,9 @@ const CamperCard = ({ camper }) => {
           {description}
         </p>
 
-        <ul className="grid grid-cols-2 gap-4 mb-6">
-          {[
-            { label: "AC", icon: "wind", value: AC },
-            { label: "Gas", icon: "hugeicons_gas-stove", value: gas },
-            { label: "Kitchen", icon: "cup-hot", value: kitchen },
-            { label: "TV", icon: "tv", value: TV },
-            { label: "Bathroom", icon: "ph_shower", value: bathroom },
-            { label: "Water", icon: "ion_water-outline", value: water },
-            { label: "Radio", icon: "ui-radios", value: radio },
-            {
-              label: "Refrigerator",
-              icon: "solar_fridge-outline",
-              value: refrigerator,
-            },
-            { label: "Microwave", icon: "lucide_microwave", value: microwave },
-          ]
-            .filter((feature) => feature.value)
-            .map(({ label, icon }) => (
-              <li key={label} className="flex items-center gap-2">
-                <Icon id={icon} w={20} h={20} className="fill-black" />
-                <span className="text-sm text-black">{label}</span>
-              </li>
-            ))}
-        </ul>
+        <div className="mb-6">
+          <CamperFeatures features={camper} />
+        </div>
 
         <Link
           to={`/catalog/${id}`}

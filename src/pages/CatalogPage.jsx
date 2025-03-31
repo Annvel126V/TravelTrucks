@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCampers } from "../redux/campers/operations.js";
 import CamperCard from "../components/section/Catalog/CamperCard.jsx";
@@ -13,9 +13,15 @@ const CatalogPage = () => {
   const campers = useSelector((state) => state.campers.items);
   const loading = useSelector((state) => state.campers.loading);
   const error = useSelector((state) => state.campers.error);
+  const [isPageLoading, setIsPageLoading] = useState(true);
 
   useEffect(() => {
     dispatch(fetchCampers({}));
+    const timer = setTimeout(() => {
+      setIsPageLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
   }, [dispatch]);
 
   return (
@@ -24,8 +30,8 @@ const CatalogPage = () => {
       <div className=" flex  p-16 gap-16 justify-center">
         <Filters />
 
-        <main className="">
-          {loading && campers.length === 0 && <LoadingSpinner />}
+        <main>
+          {(loading || isPageLoading) && <LoadingSpinner />}
           {error && <ErrorMessage message={error} />}
           {!loading && !error && (
             <>

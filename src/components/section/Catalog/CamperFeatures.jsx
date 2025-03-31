@@ -21,7 +21,7 @@ const CamperFeatures = ({ features }) => {
     <div className="flex flex-wrap gap-2 mt-2">
       {/* Transmission */}
       {features?.transmission === "automatic" && (
-        <span className="flex items-center gap-2 bg-[#F2F4F7] px-4 py-2 rounded-full text-sm text-black">
+        <span className="flex items-center gap-2 bg-silver px-4 py-2 rounded-full text-sm text-black">
           <Icon id="diagram" w={20} h={20} className="fill-black" />
           Automatic
         </span>
@@ -29,7 +29,7 @@ const CamperFeatures = ({ features }) => {
 
       {/* Engine type */}
       {features?.engine === "petrol" && (
-        <span className="flex items-center gap-2 bg-[#F2F4F7] px-4 py-2 rounded-full text-sm text-black">
+        <span className="flex items-center gap-2 bg-silver px-4 py-2 rounded-full text-sm text-black">
           <Icon id="hugeicons_gas-stove" w={20} h={20} className="fill-black" />
           Petrol
         </span>
@@ -40,7 +40,7 @@ const CamperFeatures = ({ features }) => {
         features?.[key] ? (
           <span
             key={key}
-            className="flex items-center gap-2 bg-[#F2F4F7] px-4 py-2 rounded-full text-sm text-black"
+            className="flex items-center gap-2 bg-silver px-4 py-2 rounded-full text-sm text-black"
           >
             <Icon id={icon} w={20} h={20} className="fill-black" />
             {label}
