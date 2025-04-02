@@ -1,4 +1,4 @@
-import Icon from "../../Icon/Icon";
+import Icon from "../../icons/Icon";
 
 const CamperInfo = ({ camper }) => {
   const gallery = camper.gallery || [];
@@ -9,24 +9,24 @@ const CamperInfo = ({ camper }) => {
   }
 
   return (
-    <div className="   p-16">
-      <h2 className="text-3xl font-bold mb-2">{camper.name}</h2>
+    <div className="p-16">
+      <h2 className="text-xl font-bold mb-2">{camper.name}</h2>
       <div className="flex flex-wrap items-center gap-4 mt-2">
         <div className="flex items-center">
-          <Icon id="star" w={18} h={18} className="mr-1 fill-yellow" />
+          <Icon id="star" w={16} h={15} className="mr-1 fill-yellow" />
           <p className="text-base font-medium underline">
             {camper.rating} ({camper.reviews?.length || 0} Reviews)
           </p>
         </div>
         <div className="flex items-center">
-          <Icon id="map" w={16} h={15} className="mr-1" />
+          <Icon id="map" w={16} h={16} className="mr-1" />
           <p className="text-base font-normal">
             {camper.location || "Unknown Location"}
           </p>
         </div>
       </div>
       <div>
-        <p className="text-gray flex  text-lg mb-4">
+        <p className="text-gray flex  text-base mb-4">
           <span className="font-semibold text-black">€{camper.price}</span>
         </p>
       </div>
@@ -37,7 +37,7 @@ const CamperInfo = ({ camper }) => {
             key={idx}
             src={img.thumb || "/images/default-camper.jpg"}
             alt={`Gallery ${idx + 1}`}
-            className="rounded-lg w-[292px] h-[312px] object-cover"
+            className="rounded-lg w-[292px] h-[320px] object-cover"
           />
         ))}
       </div>

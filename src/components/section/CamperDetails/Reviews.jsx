@@ -1,6 +1,5 @@
-import Icon from "../../Icon/Icon";
-import BookingForm from "../../BookingForm/BookingForm";
-
+import Icon from "../../icons/Icon";
+import BookingForm from "../../forms/BookingForm";
 const Reviews = ({ reviews = [], camper }) => {
   if (!Array.isArray(reviews) || reviews.length === 0) {
     return <p className="text-gray-500 p-4">No reviews available.</p>;

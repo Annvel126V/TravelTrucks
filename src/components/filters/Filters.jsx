@@ -1,6 +1,6 @@
 import VehicleFilters from "./VehicleFilters.jsx";
 import TypeFilter from "./TypeFilter.jsx";
-import SearchButton from "../section/Catalog/SearchButton.jsx";
+import SearchButton from "../buttons/SearchButton.jsx";
 import LocationSearch from "../section/Catalog/LocationSearch.jsx";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -11,6 +11,7 @@ import { resetCampers } from "../../redux/campers/slice.js";
 import { fetchCampers } from "../../redux/campers/operations.js";
 import { useEffect } from "react";
 import VehicleTitle from "../section/Catalog/VehicleTitle.jsx";
+import ResetFiltersBtn from "../buttons/ResetFiltersBtn.jsx";
 
 const Filters = () => {
   const dispatch = useDispatch();
@@ -36,7 +37,10 @@ const Filters = () => {
         variant="square"
       />
       <TypeFilter />
-      <SearchButton />
+      <div className="flex justify-between">
+        <SearchButton />
+        <ResetFiltersBtn />
+      </div>
     </aside>
   );
 };

@@ -1,5 +1,5 @@
 import CamperFeatures from "../Catalog/CamperFeatures";
-import BookingForm from "../../BookingForm/BookingForm";
+import BookingForm from "../../forms/BookingForm";
 import FeaturesDetalis from "./FeaturesDetalis";
 
 const Features = ({ camper }) => {

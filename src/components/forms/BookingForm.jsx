@@ -1,5 +1,5 @@
 import { Formik } from "formik";
-import validationSchema from "../Schemas/validationSchema";
+import validationSchema from "../schemas/validationSchema";
 import BookingFormHeader from "./BookingFormHeader";
 import BookingFormFields from "./BookingFormFields";
 import { useDispatch } from "react-redux";
@@ -37,7 +37,7 @@ const BookingForm = ({ camper }) => {
     }
   };
   return (
-    <div className="p-6 w-[641px] h-[588px] rounded-lg shadow border border-lightGray">
+    <div className="p-2 w-[641px] h-[588px] rounded-lg shadow border border-lightGray">
       <BookingFormHeader />
       <Formik
         initialValues={initialValues}

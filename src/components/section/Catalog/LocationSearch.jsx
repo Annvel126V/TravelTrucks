@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Icon from "../../Icon/Icon";
+import Icon from "../../icons/Icon";
 
 const LocationSearch = () => {
   const [location, setlocation] = useState("");

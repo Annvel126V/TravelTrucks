@@ -4,7 +4,7 @@ import {
   removeFavorite,
   selectFavorites,
 } from "../../../redux/campers/slice.js";
-import Icon from "../../Icon/Icon";
+import Icon from "../../icons/Icon.jsx";
 import { Link } from "react-router-dom";
 import CamperFeatures from "./CamperFeatures.jsx";
 

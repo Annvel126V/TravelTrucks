@@ -1,4 +1,4 @@
-import Icon from "../../Icon/Icon";
+import Icon from "../../icons/Icon";
 
 const CamperFeatures = ({ features }) => {
   const featureList = [

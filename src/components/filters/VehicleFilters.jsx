@@ -1,4 +1,4 @@
-import Icon from "../Icon/Icon";
+import Icon from "../icons/Icon";
 
 const VehicleFilters = ({
   transmission,
@@ -25,7 +25,7 @@ const VehicleFilters = ({
   const isSquare = variant === "square";
 
   const baseButton = isSquare
-    ? "w-[112px] h-[95px] border text-sm flex flex-col items-center justify-center gap-2 rounded-lg transition-all font-medium"
+    ? "w-[112px] h-[96px] border text-base flex flex-col items-center justify-center gap-2 rounded-lg transition-all font-medium"
     : "px-4 py-2 h-[48px] rounded-full text-sm font-medium flex items-center gap-2 border transition";
 
   const getButtonStyle = (isActive) =>
@@ -34,7 +34,7 @@ const VehicleFilters = ({
         ? "bg-white border-red text-black"
         : isSquare
         ? "bg-white border-lightGray text-black"
-        : "bg-[#F2F4F7] border-transparent text-black"
+        : "bg-silver border-transparent text-black"
     }`;
 
   const getIconStyle = (isActive) => (isActive ? "fill-black" : "fill-black");
@@ -56,7 +56,7 @@ const VehicleFilters = ({
           <Icon
             id="diagram"
             w={isSquare ? 32 : 32}
-            h={isSquare ? 28 : 28}
+            h={isSquare ? 24 : 24}
             className={getIconStyle(transmission === "automatic")}
           />
           Automatic

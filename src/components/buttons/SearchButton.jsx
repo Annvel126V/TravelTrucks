@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCampers } from "../../../redux/campers/operations.js";
+import { fetchCampers } from "../../redux/campers/operations.js";
 
 const SearchButton = () => {
   const dispatch = useDispatch();

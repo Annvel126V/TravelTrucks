@@ -4,7 +4,7 @@ const BookingFormBtn = ({ isSubmitting }) => {
       type="submit"
       disabled={isSubmitting}
       className={`w-[166px] h-[56px] rounded-[200px] ${
-        isSubmitting ? "bg-gray-400" : "bg-red hover:bg-darkRed text-white"
+        isSubmitting ? "bg-gray" : "bg-red hover:bg-darkRed text-white"
       }`}
     >
       {isSubmitting ? "Sending..." : "Send"}

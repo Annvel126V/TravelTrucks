@@ -28,7 +28,12 @@ const filtersSlice = createSlice({
       state.transmission =
         state.transmission === "automatic" ? "" : "automatic";
     },
-    resetFilters: () => initialState,
+    resetFilters: (state) => {
+      state.location = "";
+      state.form = "";
+      state.transmission = "";
+      state.equipment = [];
+    },
   },
 });
 
