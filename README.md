@@ -44,7 +44,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-github-username/travel-trucks.git
+git clone https://github.com/Annvel126V/TravelTrucks.git
 cd travel-trucks
 
 # Install dependencies
