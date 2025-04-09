@@ -11,7 +11,7 @@ const CamperInfo = ({ camper }) => {
   return (
     <div className="p-16">
       <h2 className="text-xl font-bold mb-2">{camper.name}</h2>
-      <div className="flex flex-wrap items-center gap-4 mt-2">
+      <div className="flex flex-wrap mb-4 items-center gap-4 ">
         <div className="flex items-center">
           <Icon id="star" w={16} h={15} className="mr-1 fill-yellow" />
           <p className="text-base font-medium underline">
@@ -26,12 +26,12 @@ const CamperInfo = ({ camper }) => {
         </div>
       </div>
       <div>
-        <p className="text-gray flex  text-base mb-4">
-          <span className="font-semibold text-black">€{camper.price}</span>
+        <p className="text-gray flex  text-xl mb-7">
+          <span className="font-xl text-black">€{camper.price}</span>
         </p>
       </div>
 
-      <div className="grid grid-cols-4 gap-[48px] mb-6">
+      <div className="grid grid-cols-4 gap-[48px] mb-7">
         {camper.gallery?.slice(0, 4).map((img, idx) => (
           <img
             key={idx}

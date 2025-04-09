@@ -12,14 +12,14 @@ const LoadingSpinner = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "white", // якщо хочеш білий фон
-        zIndex: 9999, // якщо треба поверх всього
+        backgroundColor: "white",
+        zIndex: 9999,
       }}
     >
       <RotatingTriangles
         visible={true}
-        height="500"
-        width="500"
+        height="300"
+        width="300"
         color="#4fa94d"
         ariaLabel="rotating-triangles-loading"
         wrapperStyle={{}}

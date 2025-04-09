@@ -7,6 +7,7 @@ import Header from "../components/section/Header/Header.jsx";
 import Tabs from "../components/section/CamperDetails/Tabs.jsx";
 import LoadingSpinner from "../components/LoadingSpinner.jsx";
 import ErrorMessage from "../components/ErrorMessage.jsx";
+import PageContainer from "../components/layout/PageContainer.jsx";
 
 const CamperDetailsPage = () => {
   const { id } = useParams();
@@ -39,10 +40,10 @@ const CamperDetailsPage = () => {
   return (
     <>
       <Header />
-      <div className="">
+      <PageContainer>
         <CamperInfo camper={camper} />
-      </div>
-      <Tabs camper={camper} />
+        <Tabs camper={camper} />
+      </PageContainer>
     </>
   );
 };

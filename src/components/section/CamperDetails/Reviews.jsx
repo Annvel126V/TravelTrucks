@@ -2,11 +2,11 @@ import Icon from "../../icons/Icon";
 import BookingForm from "../../forms/BookingForm";
 const Reviews = ({ reviews = [], camper }) => {
   if (!Array.isArray(reviews) || reviews.length === 0) {
-    return <p className="text-gray-500 p-4">No reviews available.</p>;
+    return <p className="text-gray p-4">No reviews available.</p>;
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 justify-center p-16 gap-16">
+    <div className="grid grid-cols-1 md:grid-cols-2 justify-between p-16 gap-16">
       <div className="flex flex-col gap-8">
         {reviews.map((review, i) => {
           const name = review.reviewerName || "Anonymous";
@@ -24,9 +24,9 @@ const Reviews = ({ reviews = [], camper }) => {
 
               <div>
                 <div className="flex flex-col gap-3">
-                  <div className="gap-2 mb-1">
-                    <span className="font-semibold text-black">{name}</span>
-                    <div className="flex items-center">
+                  <div className="gap-2">
+                    <span className="font-semibold  text-black">{name}</span>
+                    <div className="flex mt-1 ">
                       {Array.from({ length: 5 }).map((_, index) => (
                         <Icon
                           key={`star-${index}`}
