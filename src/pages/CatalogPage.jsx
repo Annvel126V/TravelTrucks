@@ -7,6 +7,7 @@ import Filters from "../components/filters/Filters.jsx";
 import LoadingSpinner from "../components/LoadingSpinner.jsx";
 import ErrorMessage from "../components/ErrorMessage.jsx";
 import Pagination from "../components/section/Catalog/Pagination.jsx";
+import ScrollUppBtn from "../components/buttons/ScrollUppBtn.jsx";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ const CatalogPage = () => {
           )}
         </main>
       </div>
+      <ScrollUppBtn />
     </div>
   );
 };

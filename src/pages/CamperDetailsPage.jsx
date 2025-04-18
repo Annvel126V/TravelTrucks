@@ -8,6 +8,7 @@ import Tabs from "../components/section/CamperDetails/Tabs.jsx";
 import LoadingSpinner from "../components/LoadingSpinner.jsx";
 import ErrorMessage from "../components/ErrorMessage.jsx";
 import PageContainer from "../components/layout/PageContainer.jsx";
+import ScrollUppBtn from "../components/buttons/ScrollUppBtn.jsx";
 
 const CamperDetailsPage = () => {
   const { id } = useParams();
@@ -44,6 +45,7 @@ const CamperDetailsPage = () => {
         <CamperInfo camper={camper} />
         <Tabs camper={camper} />
       </PageContainer>
+      <ScrollUppBtn />
     </>
   );
 };
