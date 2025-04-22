@@ -5,7 +5,6 @@ const Pagination = () => {
   const dispatch = useDispatch();
   const hasMore = useSelector((state) => state.campers.hasMore);
   const isLoading = useSelector((state) => state.campers.isLoading);
-
   return (
     hasMore && (
       <button

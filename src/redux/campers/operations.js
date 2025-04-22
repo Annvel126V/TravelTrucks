@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import buildQueryParams from "../../utils/buildQueryParams";
 
 const BASE_URL = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers";
 
@@ -9,28 +10,9 @@ export const fetchCampers = createAsyncThunk(
     try {
       const { filters, campers } = getState();
 
-      const queryParams = {
-        page: campers.page,
-        limit: 4,
-      };
+      const params = buildQueryParams(filters, campers.page);
 
-      if (filters.location) {
-        queryParams.location = filters.location;
-      }
-
-      if (filters.form) {
-        queryParams.form = filters.form;
-      }
-
-      if (filters.transmission) {
-        queryParams.transmission = filters.transmission;
-      }
-
-      filters.equipment.forEach((eq) => {
-        queryParams[eq] = true;
-      });
-
-      const response = await axios.get(BASE_URL, { params: queryParams });
+      const response = await axios.get(BASE_URL, { params });
 
       if (!response.data || !Array.isArray(response.data.items)) {
         console.error("API response is not an array:", response.data);
@@ -55,16 +37,9 @@ export const loadMoreCampers = createAsyncThunk(
       const { campers, filters } = getState();
       const nextPage = campers.page + 1;
 
-      const response = await axios.get(BASE_URL, {
-        params: {
-          page: nextPage,
-          limit: 4,
-          location: filters.location,
-          form: filters.form,
-          transmission: filters.transmission,
-          equipment: filters.equipment.join(",") || undefined,
-        },
-      });
+      const params = buildQueryParams(filters, nextPage);
+
+      const response = await axios.get(BASE_URL, { params });
 
       return {
         items: response.data.items,

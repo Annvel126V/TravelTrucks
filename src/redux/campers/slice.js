@@ -45,7 +45,6 @@ const campersSlice = createSlice({
       state.hasMore = true;
       state.loading = false;
       state.error = null;
-      Object.assign(state, initialState);
     },
     clearSelectedCamper: (state) => {
       state.selectedCamper = null;
@@ -58,7 +57,6 @@ const campersSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchCampers.fulfilled, (state, action) => {
-        console.log("Redux updated with campers:", action.payload);
         state.loading = false;
         state.items = action.payload || [];
       })
